@@ -2,8 +2,8 @@
 //  RecordingsTableViewCell.swift
 //  Voice Memos
 //
-//  Created by Shahzaib on 3/5/22.
-//  Copyright © 2022 Shahzaib. All rights reserved.
+//  Created by Paula Luput on 3/5/23.
+//  Copyright © 2023 Paula Luput. All rights reserved.
 //
 
 import UIKit

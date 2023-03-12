@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C79C11D629BBF82300EAE44B /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C79C11D529BBF82300EAE44B /* TableViewCell.swift */; };
 		EA24609B27D317F8008B3007 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24609A27D317F8008B3007 /* AppDelegate.swift */; };
 		EA24609D27D317F8008B3007 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24609C27D317F8008B3007 /* SceneDelegate.swift */; };
 		EA24609F27D317F8008B3007 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24609E27D317F8008B3007 /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C79C11D529BBF82300EAE44B /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		EA24609727D317F8008B3007 /* Voice Memos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Voice Memos.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA24609A27D317F8008B3007 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA24609C27D317F8008B3007 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				EA2460CF27D320F5008B3007 /* RecordingsTableViewCell.swift */,
+				C79C11D529BBF82300EAE44B /* TableViewCell.swift */,
 			);
 			path = "Table View Cell";
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				EA2460CE27D32068008B3007 /* RecordMemosViewController.swift in Sources */,
 				EA24609B27D317F8008B3007 /* AppDelegate.swift in Sources */,
 				EA2460D027D320F5008B3007 /* RecordingsTableViewCell.swift in Sources */,
+				C79C11D629BBF82300EAE44B /* TableViewCell.swift in Sources */,
 				EA24609D27D317F8008B3007 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

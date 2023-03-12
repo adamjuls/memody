@@ -2,8 +2,8 @@
 //  RecordMemosViewController.swift
 //  Voice Memos
 //
-//  Created by Shahzaib on 3/5/22.
-//  Copyright © 2022 Shahzaib. All rights reserved.
+//  Created by Paula Luput on 3/5/23.
+//  Copyright © 2023 Paula Luput. All rights reserved.
 //
 
 import UIKit
@@ -15,7 +15,8 @@ class RecordMemosViewController: UIViewController, AVAudioRecorderDelegate {
     // MARK:- Creating Outlets.
     //************************************************//
     
-    @IBOutlet weak var tableView: UITableView!
+//    @IBOutlet weak var recordingsTable: UITableView!
+//    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var tapLabel: UILabel!
     @IBOutlet weak var recordingButtonView: UIView!
@@ -39,10 +40,10 @@ class RecordMemosViewController: UIViewController, AVAudioRecorderDelegate {
     var forwadlabelTimer = Timer()
     var reverselabelTimer = Timer()
     
-    var numberOfRecords:Int = 0
+//    var numberOfRecords:Int = 0
     var progressValue : Float = 0
     
-    var AllRecordings = [String]()
+//    var AllRecordings = [String]()
     
     var refreshControl = UIRefreshControl()
     
@@ -53,6 +54,7 @@ class RecordMemosViewController: UIViewController, AVAudioRecorderDelegate {
     deinit {
         print("deinit called")
     }
+
     
     //************************************************//
     // MARK:- View life Cycle
@@ -61,26 +63,27 @@ class RecordMemosViewController: UIViewController, AVAudioRecorderDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        AllRecordings = []
+//        AllRecordings = []
         
         tapLabel.isHidden = true
         PopUpView.isHidden = true
         
         recordingSession = AVAudioSession.sharedInstance()
         
-        if let Number: Int =  UserDefaults.standard.value(forKey: "RecordingNumber") as? Int {
-            numberOfRecords = Number
-            print(Number)
-        }
+//        if let Number: Int =  UserDefaults.standard.value(forKey: "RecordingNumber") as? Int {
+//            numberOfRecords = Number
+//            print(Number)
+//        }
         
         CreatePopUpView()
         
-        GetRecordings()
+//        GetRecordings()
         
-        refreshControl.attributedTitle = NSAttributedString(string: "Loading...")
-        
-        refreshControl.addTarget(self, action: #selector(PulltoRefresh(sender:)), for: .valueChanged)
-        tableView.refreshControl = refreshControl
+//        refreshControl.attributedTitle = NSAttributedString(string: "Loading...")
+//
+//        refreshControl.addTarget(self, action: #selector(PulltoRefresh(sender:)), for: .valueChanged)
+//        tableView.refreshControl = refreshControl
+//        recordingsTable.refreshControl = refreshControl
     }
     
     //************************************************//
@@ -99,16 +102,17 @@ class RecordMemosViewController: UIViewController, AVAudioRecorderDelegate {
     // MARK:- Custom methods, actions and selectors.
     //************************************************//
     
-    @objc func PulltoRefresh(sender: UIRefreshControl) {
-        sender.endRefreshing()
-        tableView.reloadData()
-    }
+//    @objc func PulltoRefresh(sender: UIRefreshControl) {
+//        sender.endRefreshing()
+//        tableView.reloadData()
+//        recordingsTable.reloadData()
+//    }
     
     //************************************************//
     
     func CreatePopUpView() {
         
-        PopUpView.backgroundColor = UIColor.systemGray5
+        PopUpView.backgroundColor = UIColor.black
         view.addSubview(PopUpView)
         
         PopUpView.translatesAutoresizingMaskIntoConstraints = false
@@ -166,7 +170,7 @@ class RecordMemosViewController: UIViewController, AVAudioRecorderDelegate {
                 audioRecorder.delegate = self
                 audioRecorder.record()
                 
-                sender.setBackgroundImage(UIImage(named: "Square") , for: .normal)
+                sender.setBackgroundImage(UIImage(named: "Stop") , for: .normal)
                 print("Recording Start")
                 PopUpView.isHidden = false
                 
@@ -195,11 +199,11 @@ class RecordMemosViewController: UIViewController, AVAudioRecorderDelegate {
             
             UserDefaults.standard.set(numberOfRecords, forKey: "RecordingNumber")
             
-            sender.setBackgroundImage(UIImage(named: "Circle") , for: .normal)
+            sender.setBackgroundImage(UIImage(named: "Record") , for: .normal)
             print("Recording Stop")
             PopUpView.isHidden = true
             
-            GetRecordings()
+//            GetRecordings()
         }
     }
     
@@ -280,7 +284,7 @@ extension RecordMemosViewController : RecordingsTableViewCellProtocols {
         do {
             try manager.removeItem(at: pathString!)
             DispatchQueue.main.async {
-                self.GetRecordings()
+//                self.GetRecordings()
                 self.tableView.reloadData()
             }
             print("Recording Deleted")
@@ -429,42 +433,42 @@ extension RecordMemosViewController {
     
     // Mark:- Function to Get All Recordings from directory
     
-    func GetRecordings() {
-        AllRecordings = []
-        
-        let folderPath = Manager.shared.getDirectory()
-        
-        print("Folder Path: \(folderPath)")
-        
-        do {
-            let audioPath = try FileManager.default.contentsOfDirectory(at: folderPath, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-            
-            if audioPath.isEmpty {
-                tableView.isHidden = true
-                numberOfRecords = 0
-                UserDefaults.standard.set(numberOfRecords, forKey: "RecordingNumber")
-                print("No Recording in file.")
-            }
-            else {
-                for audio in audioPath {
-                    var myAudio = audio.absoluteString
-                    
-                    if myAudio.contains(".m4a") {
-                        let findAudioName = myAudio.components(separatedBy: "/")
-                        myAudio = findAudioName[findAudioName.count-1]
-                        myAudio = myAudio.replacingOccurrences(of: "%20", with: " ")
-                        myAudio = myAudio.replacingOccurrences(of: ".m4a", with: "")
-                        AllRecordings.append(myAudio)
-                        print(myAudio)
-                        self.tableView.reloadData()
-                    }
-                }
-            }
-        }
-        catch {
-            print("Error Getting Recordings")
-        }
-    }
+//    func GetRecordings() {
+//        AllRecordings = []
+//
+//        let folderPath = Manager.shared.getDirectory()
+//
+//        print("Folder Path: \(folderPath)")
+//
+//        do {
+//            let audioPath = try FileManager.default.contentsOfDirectory(at: folderPath, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+//
+//            if audioPath.isEmpty {
+//                tableView.isHidden = true
+//                numberOfRecords = 0
+//                UserDefaults.standard.set(numberOfRecords, forKey: "RecordingNumber")
+//                print("No Recording in file.")
+//            }
+//            else {
+//                for audio in audioPath {
+//                    var myAudio = audio.absoluteString
+//
+//                    if myAudio.contains(".m4a") {
+//                        let findAudioName = myAudio.components(separatedBy: "/")
+//                        myAudio = findAudioName[findAudioName.count-1]
+//                        myAudio = myAudio.replacingOccurrences(of: "%20", with: " ")
+//                        myAudio = myAudio.replacingOccurrences(of: ".m4a", with: "")
+//                        AllRecordings.append(myAudio)
+//                        print(myAudio)
+//                        self.tableView.reloadData()
+//                    }
+//                }
+//            }
+//        }
+//        catch {
+//            print("Error Getting Recordings")
+//        }
+//    }
     
     // Mark:- Function to Play Recording
     
