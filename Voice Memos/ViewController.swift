@@ -17,6 +17,7 @@ class ViewController: UIViewController, TableViewCellProtocols {
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet weak var tapLabel: UILabel!
+    @IBOutlet weak var recordButton: UIButton!
     
     //************************************************//
     // MARK: Creating properties.
@@ -72,7 +73,26 @@ class ViewController: UIViewController, TableViewCellProtocols {
         sender.endRefreshing()
         tableView.reloadData()
     }
+    
+    //************************************************//
+
+    // MARK:- IBAction Methods
+
+    @IBAction func recordButtonTapped(_ sender: UIButton) {
+        numberOfRecords += 1
+        let filename = Manager.shared.getDirectory().appendingPathComponent("\(numberOfRecords).m4a")
+        
+        let vc = RecordMemosViewController()
+        vc.filename = filename
+        vc.numberOfRecords = numberOfRecords
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .coverVertical
+        present(vc, animated: true)
+    }
+    
+    
 }
+
 
 extension ViewController : UITableViewDelegate,UITableViewDataSource {
     
@@ -168,3 +188,41 @@ extension ViewController {
     }
 
 }
+
+//************************ FOR LATER: DELETE BUTTON ****************************//
+
+//extension RecordMemosViewController : RecordingsTableViewCellProtocols {
+//
+//    // Mark:- Delete Recording Button Method
+//
+//    func DeleteButtonTapped(cell: RecordingsTableViewCell) {
+//        let index = cell.deleteAudio.tag
+//        AllRecordings.remove(at: index)
+//
+//        let manager = FileManager.default
+//
+//        guard let url = manager.urls(
+//            for: .documentDirectory,
+//            in: .userDomainMask).first else {
+//            return
+//        }
+//
+//        AllRecordings = []
+//
+//        let pathString = URL(string: "\(url)/\(cell.recordingName.text!).m4a")
+//
+//        do {
+//            try manager.removeItem(at: pathString!)
+//            DispatchQueue.main.async {
+////                self.GetRecordings()
+//                self.tableView.reloadData()
+//            }
+//            print("Recording Deleted")
+//        }
+//        catch {
+//            print("Got Error While Deleteing")
+//        }
+//
+//        print("Delete Button Tapped!")
+//    }
+//}
