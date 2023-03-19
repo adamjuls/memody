@@ -119,34 +119,53 @@
         <!--Record Memos View Controller-->
         <scene sceneID="LPM-gd-FaH">
             <objects>
-                <viewController id="N4S-kO-fYr" customClass="RecordMemosViewController" customModule="Voice_Memos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecordMemosViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="N4S-kO-fYr" customClass="RecordMemosViewController" customModule="Voice_Memos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m4B-rz-e17">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Je-R8-Dbk">
-                                <rect key="frame" x="162.41881055694375" y="754" width="84.999999999999886" height="85.000000000000114"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Je-R8-Dbk">
+                                <rect key="frame" x="162.5" y="754" width="85" height="85"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="85.000000000000114" id="KCt-6S-hrH"/>
+                                </constraints>
                                 <state key="normal" image="Stop"/>
                                 <connections>
                                     <action selector="stopButtonTapped:" destination="N4S-kO-fYr" eventType="touchUpInside" id="ZxS-TI-qj2"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SUN-bD-2fW">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SUN-bD-2fW">
                                 <rect key="frame" x="26" y="247" width="362" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IeH-TH-gZz">
+                                        <rect key="frame" x="8" y="50" width="61" height="61"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="61" id="h6K-qv-BRq"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="Play"/>
+                                        <connections>
+                                            <action selector="playButtonTapped:" destination="N4S-kO-fYr" eventType="touchUpInside" id="gTh-ud-t5s"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="IeH-TH-gZz" firstAttribute="leading" secondItem="SUN-bD-2fW" secondAttribute="leadingMargin" id="P1p-bY-Z1t"/>
+                                    <constraint firstItem="IeH-TH-gZz" firstAttribute="centerY" secondItem="SUN-bD-2fW" secondAttribute="centerY" id="iid-sh-mgC"/>
+                                    <constraint firstItem="IeH-TH-gZz" firstAttribute="top" secondItem="SUN-bD-2fW" secondAttribute="top" constant="50" id="yDV-I9-gIe"/>
+                                </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Untitled Tape" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckX-sE-fPS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Untitled Tape" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckX-sE-fPS">
                                 <rect key="frame" x="26" y="98" width="209" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="xZz-6z-0Ib"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="37"/>
                                 <color key="textColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Untitled Tape" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3wX-i9-8Ra">
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Untitled Tape" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3wX-i9-8Ra">
                                 <rect key="frame" x="20" y="103" width="227" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="labelColor"/>
                                 <color key="textColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
@@ -155,9 +174,25 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hfb-kf-OH6"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="1Je-R8-Dbk" secondAttribute="bottom" constant="-31.000000000000114" id="6I0-M9-uFW"/>
+                            <constraint firstItem="3wX-i9-8Ra" firstAttribute="leading" secondItem="m4B-rz-e17" secondAttribute="leadingMargin" id="BZ9-es-Jpq"/>
+                            <constraint firstItem="1Je-R8-Dbk" firstAttribute="leading" secondItem="hfb-kf-OH6" secondAttribute="leading" constant="162.41881055694375" id="EA6-sa-qUo"/>
+                            <constraint firstItem="ckX-sE-fPS" firstAttribute="leading" secondItem="SUN-bD-2fW" secondAttribute="leading" id="FLY-nf-XvM"/>
+                            <constraint firstItem="SUN-bD-2fW" firstAttribute="top" secondItem="m4B-rz-e17" secondAttribute="top" constant="247" id="Gbs-Zl-gdk"/>
+                            <constraint firstItem="hfb-kf-OH6" firstAttribute="trailing" secondItem="1Je-R8-Dbk" secondAttribute="trailing" constant="166.58118944305636" id="SUm-ng-nzY"/>
+                            <constraint firstItem="SUN-bD-2fW" firstAttribute="centerX" secondItem="m4B-rz-e17" secondAttribute="centerX" id="apZ-au-vtk"/>
+                            <constraint firstItem="ckX-sE-fPS" firstAttribute="top" secondItem="hfb-kf-OH6" secondAttribute="top" constant="98" id="fCD-wc-Jh7"/>
+                            <constraint firstItem="3wX-i9-8Ra" firstAttribute="centerY" secondItem="ckX-sE-fPS" secondAttribute="centerY" id="pyr-8J-Pf5"/>
+                            <constraint firstAttribute="bottom" secondItem="SUN-bD-2fW" secondAttribute="bottom" constant="435" id="r9L-5S-rL5"/>
+                            <constraint firstItem="ckX-sE-fPS" firstAttribute="leading" secondItem="hfb-kf-OH6" secondAttribute="leading" constant="26" id="rB5-Ky-ecL"/>
+                            <constraint firstItem="hfb-kf-OH6" firstAttribute="trailing" secondItem="3wX-i9-8Ra" secondAttribute="trailing" constant="167" id="taA-jb-RYZ"/>
+                            <constraint firstItem="3wX-i9-8Ra" firstAttribute="top" secondItem="hfb-kf-OH6" secondAttribute="top" constant="103" id="upY-wg-2Lu"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fpK-O2-lyG"/>
                     <connections>
+                        <outlet property="playButton" destination="IeH-TH-gZz" id="QEr-b4-BP8"/>
                         <outlet property="stopButton" destination="1Je-R8-Dbk" id="y8L-KC-BBI"/>
                         <outlet property="tapeLabel" destination="ckX-sE-fPS" id="FPJ-Dk-rHo"/>
                         <outlet property="tapeText" destination="3wX-i9-8Ra" id="DWl-wK-4v9"/>
@@ -188,6 +223,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Play" width="314" height="318"/>
         <image name="Record" width="512" height="512"/>
         <image name="Stop" width="512" height="512"/>
         <systemColor name="labelColor">

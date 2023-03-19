@@ -90,6 +90,7 @@ class RecordMemosViewController: UIViewController, AVAudioRecorderDelegate, UITe
         tapGesture.numberOfTapsRequired = 1
         tapeLabel.addGestureRecognizer(tapGesture)
         
+        playButton.isHidden = true
         audioPlayer = nil
         myTimer.invalidate()
         RemainProgess.invalidate()
@@ -246,14 +247,34 @@ class RecordMemosViewController: UIViewController, AVAudioRecorderDelegate, UITe
             UserDefaults.standard.set(numberOfRecords, forKey: "RecordingNumber")
 
             sender.setBackgroundImage(UIImage(named: "Record") , for: .normal)
+            
+            playButton.isHidden = false
             print("Recording Stop")
+        }
+    }
+    
+    
+    @IBAction func playButtonTapped(_ sender: UIButton) {
+        if !isPlay {
+            sender.setBackgroundImage(UIImage(named: "Pause"), for: .normal)
+            print("Recording is Playing")
+    
+            PlayRecording(RecordingName: String(numberOfRecords - 1))
+
+            isPlay = true
+        }
+        else {
+            sender.setBackgroundImage(UIImage(named: "Play") , for: .normal)
+            print("Recording is Paused")
+            audioPlayer.pause()
+            isPlay = false
         }
     }
     
     //************************************************//
 }
 
-extension RecordMemosViewController {
+//extension RecordMemosViewController {
     
     // Mark:- Delete Recording Button Method
     
@@ -421,20 +442,21 @@ extension RecordMemosViewController {
 //    }
 //}
 //
-//extension RecordMemosViewController {
-//
-//    // Mark:- Function to Play Recording
-//
-//    func PlayRecording(RecordingName: String) {
-//        let path = Manager.shared.getDirectory().appendingPathComponent("\(RecordingName).m4a")
-//
-//        do {
-//            audioPlayer = try AVAudioPlayer(contentsOf: path)
-//            audioPlayer.play()
-//        }
-//        catch {
-//            self.displayAlert(title: "Alert!", message: "Cannot Play Recording")
-//        }
-//    }
-//}
+extension RecordMemosViewController {
+
+    // Mark:- Function to Play Recording
+
+    func PlayRecording(RecordingName: String) {
+        let path = Manager.shared.getDirectory().appendingPathComponent("\(RecordingName).m4a")
+
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: path)
+            audioPlayer.play()
+        }
+        catch {
+            self.displayAlert(title: "Alert!", message: "Cannot Play Recording")
+        }
+    }
 }
+    
+//}
