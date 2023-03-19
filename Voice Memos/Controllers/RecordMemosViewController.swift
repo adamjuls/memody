@@ -16,7 +16,7 @@ class RecordMemosViewController: UIViewController, AVAudioRecorderDelegate, UITe
     //************************************************//
     
     @IBOutlet weak var tapeLabel: UILabel!
-    @IBOutlet weak var tapeText: UITextField?
+    @IBOutlet weak var tapeText: UITextField!
     @IBOutlet weak var waveformView: UIView!
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
@@ -81,9 +81,9 @@ class RecordMemosViewController: UIViewController, AVAudioRecorderDelegate, UITe
         recordingSession = AVAudioSession.sharedInstance()
 
 //      Handle Making Label Editable
-        tapeText?.text = "Untitled Tape"
-        tapeText?.delegate = self
-        tapeText?.isHidden = true
+        tapeText.text = "Untitled Tape"
+        tapeText.delegate = self
+        tapeText.isHidden = true
         tapeLabel.isUserInteractionEnabled = true
         let aSelector : Selector = Selector(("labelTapped"))
         let tapGesture = UITapGestureRecognizer(target: self, action: aSelector)
@@ -116,15 +116,15 @@ class RecordMemosViewController: UIViewController, AVAudioRecorderDelegate, UITe
     
     func labelTapped(){
         tapeLabel.isHidden = true
-        tapeText?.isHidden = false
-        tapeText?.text = tapeLabel.text
+        tapeText.isHidden = false
+        tapeText.text = tapeLabel.text
     }
 
     func textFieldShouldReturn(userText: UITextField) -> Bool {
         userText.resignFirstResponder()
-        tapeText?.isHidden = true
+        tapeText.isHidden = true
         tapeLabel.isHidden = false
-        tapeLabel.text = tapeText?.text
+        tapeLabel.text = tapeText.text
         return true
     }
     

@@ -77,17 +77,19 @@ class ViewController: UIViewController, TableViewCellProtocols {
     //************************************************//
 
     // MARK:- IBAction Methods
-
+    
     @IBAction func recordButtonTapped(_ sender: UIButton) {
         numberOfRecords += 1
-        let filename = Manager.shared.getDirectory().appendingPathComponent("\(numberOfRecords).m4a")
-        
-        let vc = RecordMemosViewController()
-        vc.filename = filename
-        vc.numberOfRecords = numberOfRecords
-        vc.modalPresentationStyle = .fullScreen
-        vc.modalTransitionStyle = .coverVertical
-        present(vc, animated: true)
+
+        let vc = storyboard?.instantiateViewController(withIdentifier: "RecordMemosViewController") as! RecordMemosViewController
+        performSegue(withIdentifier: "RecordMemosSegue", sender: vc)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "RecordMemosSegue", let vc = segue.destination as? RecordMemosViewController {
+            vc.filename = Manager.shared.getDirectory().appendingPathComponent("\(numberOfRecords).m4a")
+            vc.numberOfRecords = numberOfRecords
+        }
     }
     
     

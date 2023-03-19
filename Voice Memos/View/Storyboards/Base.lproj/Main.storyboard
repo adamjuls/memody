@@ -84,6 +84,7 @@
                                         <state key="normal" title="Button" image="Record"/>
                                         <connections>
                                             <action selector="recordButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dk6-Ai-f64"/>
+                                            <segue destination="N4S-kO-fYr" kind="presentation" identifier="RecordMemosSegue" id="WJx-Z3-H9Y"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -120,7 +121,7 @@
             <objects>
                 <viewController id="N4S-kO-fYr" customClass="RecordMemosViewController" customModule="Voice_Memos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="m4B-rz-e17">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Je-R8-Dbk">
@@ -143,6 +144,14 @@
                                 <color key="textColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Untitled Tape" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3wX-i9-8Ra">
+                                <rect key="frame" x="20" y="103" width="227" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
+                                <color key="textColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hfb-kf-OH6"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
@@ -151,6 +160,7 @@
                     <connections>
                         <outlet property="stopButton" destination="1Je-R8-Dbk" id="y8L-KC-BBI"/>
                         <outlet property="tapeLabel" destination="ckX-sE-fPS" id="FPJ-Dk-rHo"/>
+                        <outlet property="tapeText" destination="3wX-i9-8Ra" id="DWl-wK-4v9"/>
                         <outlet property="waveformView" destination="SUN-bD-2fW" id="oFz-aq-A9s"/>
                     </connections>
                 </viewController>
