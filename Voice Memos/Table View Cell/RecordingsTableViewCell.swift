@@ -11,6 +11,7 @@ protocol RecordingsTableViewCellProtocols
 {
     func PlayPauseTapped(cell: RecordingsTableViewCell)
     func DeleteButtonTapped(cell: RecordingsTableViewCell)
+    func MIDIButtonTapped(cell: RecordingsTableViewCell, RecordingName: String)
 }
 
 class RecordingsTableViewCell: UITableViewCell {
@@ -26,7 +27,7 @@ class RecordingsTableViewCell: UITableViewCell {
     @IBOutlet weak var recordingPlayPauseButton: UIButton!
     @IBOutlet weak var recordingProgress: UIProgressView!
     @IBOutlet weak var deleteAudio: UIButton!
-    
+    @IBOutlet weak var convertMIDI: UIButton!
     //************************************************//
     
     var delegate:RecordingsTableViewCellProtocols?
@@ -52,5 +53,8 @@ class RecordingsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    @IBAction func btnMIDITapped(_ sender: UIButton) {
+        delegate?.MIDIButtonTapped(cell: self, RecordingName: recordingName.text ?? "No Name")
     }
 }

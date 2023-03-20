@@ -250,6 +250,8 @@ extension RecordMemosViewController : UITableViewDelegate,UITableViewDataSource 
         cell.delegate = self
         cell.recordingPlayPauseButton.tag = indexPath.row
         cell.deleteAudio.tag = indexPath.row
+        cell.convertMIDI.tag = indexPath.row
+
         
         return cell
     }
@@ -259,8 +261,13 @@ extension RecordMemosViewController : UITableViewDelegate,UITableViewDataSource 
 
 extension RecordMemosViewController : RecordingsTableViewCellProtocols {
     
-    // Mark:- Delete Recording Button Method
+    // Mark:- MIDI Button Method
+    func MIDIButtonTapped(cell: RecordingsTableViewCell, RecordingName: String) {
+        let path = Manager.shared.getDirectory().appendingPathComponent("\(RecordingName).m4a")
+        print(path)
+    }
     
+    // Mark:- Delete Recording Button Method
     func DeleteButtonTapped(cell: RecordingsTableViewCell) {
         let index = cell.deleteAudio.tag
         AllRecordings.remove(at: index)

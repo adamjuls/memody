@@ -9,41 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Voice Memos-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Voice_Memos" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTE-Uf-NzU">
-                                <rect key="frame" x="167.5" y="315.5" width="40" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="U63-xP-B65"/>
-                                    <constraint firstAttribute="width" constant="40" id="iNJ-Lw-eAp"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" backgroundImage="plus" catalog="system"/>
-                                <connections>
-                                    <segue destination="N4S-kO-fYr" kind="show" id="OUb-AI-WDE"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="WTE-Uf-NzU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="bGW-Ra-22c"/>
-                            <constraint firstItem="WTE-Uf-NzU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uUO-Cd-rMh"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Voice Memos" id="acX-f9-QeB"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="780" y="104"/>
-        </scene>
-        <!--Test-->
+        <!--Recordings-->
         <scene sceneID="LPM-gd-FaH">
             <objects>
                 <viewController id="N4S-kO-fYr" customClass="RecordMemosViewController" customModule="Voice_Memos" customModuleProvider="target" sceneMemberID="viewController">
@@ -120,6 +86,16 @@
                                                         <action selector="btnDeleteTapped:" destination="iUo-J1-JdS" eventType="touchUpInside" id="5SU-Vk-0q0"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibj-n3-C5l">
+                                                    <rect key="frame" x="16" y="135" width="68" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="MIDI"/>
+                                                    <connections>
+                                                        <action selector="btnMIDITapped:" destination="iUo-J1-JdS" eventType="touchUpInside" id="lwI-Kn-GSA"/>
+                                                        <segue destination="3Kg-Z0-6Eo" kind="show" id="qqi-8m-Xxm"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="HK7-wK-Rea" firstAttribute="leading" secondItem="97G-kX-hMF" secondAttribute="leadingMargin" id="0hc-v1-6gY"/>
@@ -147,6 +123,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="convertMIDI" destination="ibj-n3-C5l" id="0Zu-5u-8Jw"/>
                                             <outlet property="deleteAudio" destination="2av-Zr-b8j" id="0pd-lR-WMk"/>
                                             <outlet property="recordedCurrentTime" destination="HK7-wK-Rea" id="l7z-DF-J7C"/>
                                             <outlet property="recordingCurrentTime" destination="eJd-kL-40X" id="NoS-hQ-Vza"/>
@@ -211,7 +188,7 @@
                             <constraint firstItem="AAG-uA-qMP" firstAttribute="top" secondItem="HxY-SN-3YC" secondAttribute="bottom" id="wXO-IV-r2b"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Test" id="fpK-O2-lyG"/>
+                    <navigationItem key="navigationItem" title="Recordings" id="fpK-O2-lyG"/>
                     <connections>
                         <outlet property="recordButton" destination="ofu-5d-gum" id="VgJ-ky-ekz"/>
                         <outlet property="recordingButtonView" destination="AAG-uA-qMP" id="9Xk-7C-53w"/>
@@ -221,7 +198,35 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yz9-Dz-k0f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1533.5999999999999" y="103.89805097451276"/>
+            <point key="canvasLocation" x="901.60000000000002" y="103.89805097451276"/>
+        </scene>
+        <!--MIDI-->
+        <scene sceneID="ev8-NB-V6g">
+            <objects>
+                <viewController id="3Kg-Z0-6Eo" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Svs-G7-9ee">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bor-XK-s6l">
+                                <rect key="frame" x="124" y="562" width="127" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Export"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="V2c-MD-Tpt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="bor-XK-s6l" firstAttribute="top" secondItem="V2c-MD-Tpt" secondAttribute="top" constant="466" id="0ye-To-IgH"/>
+                            <constraint firstItem="bor-XK-s6l" firstAttribute="leading" secondItem="V2c-MD-Tpt" secondAttribute="leading" constant="124" id="NLu-Fc-nCP"/>
+                            <constraint firstItem="bor-XK-s6l" firstAttribute="centerX" secondItem="Svs-G7-9ee" secondAttribute="centerX" id="SFP-KE-O2Q"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="MIDI" id="wRd-hC-ZAh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="luq-Td-alW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1848.8" y="103.89805097451276"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OhG-I9-L3t">
@@ -234,7 +239,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="XxK-tl-muh"/>
+                        <segue destination="N4S-kO-fYr" kind="relationship" relationship="rootViewController" id="Way-kM-RSi"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AUr-Js-kFL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -247,7 +252,6 @@
         <image name="Square" width="32" height="32"/>
         <image name="circle" catalog="system" width="128" height="121"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="trash.circle" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
